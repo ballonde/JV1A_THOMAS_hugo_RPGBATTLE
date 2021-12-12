@@ -8,18 +8,21 @@
 body{
 	display:flex;
 	flex-direction:column;
-	background-image:url('asset/paysage_fond.png');
+	background-image:url('asset/game_background_3.png');
+	background-size: 1000px,1000px;
 }
 
 .panel_haut{
 	display:flex;
+	height:80%;
 }
 
 .panel_bas{
+	height:20%;
 	display:flex;
 	margin-top:5%;
 	width:100%;
-	background-color:white;
+	justify-content: space-evenly;
 }
 
 .groupe_ennemi_general{/*positionnement du groupe général d'ennemis*/
@@ -57,6 +60,7 @@ body{
 	width:30%;
 	border-style:solid;
 	margin-right:5%;
+	background-color:white;
 }
 
 .choix_item{/*fenetre de choix d'action position*/
@@ -68,6 +72,7 @@ body{
 	border-style:solid;
 	margin-right:5%;
 	visibility:hidden;
+	background-color:white;
 }
 .choix_item{/*fenetre de choix d'action position*/
 	display:flex;
@@ -78,6 +83,7 @@ body{
 	border-style:solid;
 	margin-right:5%;
 	visibility:hidden;
+	background-color:white;
 
 }.choix_magie{/*fenetre de choix d'action position*/
 	display:flex;
@@ -89,6 +95,7 @@ body{
 	margin-right:5%;
 	visibility:hidden;
 	z-index:10;
+	background-color:white;
 }
 
 .affichage_perso{/*fenetre des perso position*/
@@ -96,6 +103,7 @@ body{
 	display:flex;
 	flex-direction:column;
 	border-style:solid;
+	background-color:white;
 }
 
 .ligne1{
@@ -119,13 +127,10 @@ body{
 	width:30%;
 	border-style:solid;
 	margin-right:5%;
+	background-color:white;
 }
 
 .choix_action p:hover{/*le hover pour la préselection de l'action texte grossit*/
-	font-weight: bold;
-}
-
-.choix_item p:hover{/*le hover pour la préselection de l'action texte grossit*/
 	font-weight: bold;
 }
 .choix_magie p:hover{/*le hover pour la préselection de l'action texte grossit*/
@@ -134,14 +139,20 @@ body{
 
 .affichage_ennemis1{
 	visibility:hidden;
+	background-color: white;
+	border-style:solid;
 }
 
 .affichage_ennemis2{
 	visibility:hidden;
+	background-color: white;
+	border-style:solid;
 }
 
 .affichage_ennemis3{
 	visibility:hidden;
+	background-color: white;
+	border-style:solid;
 }
 
 #hero1cache {
@@ -149,13 +160,107 @@ body{
 	visibility:hidden;
 	z-index:10;
 }
-
+#sprite-fireball {
+z-index: 10;
+position:absolute;
+visibility:hidden;
+top:20%;
+left:50%;
+height: 64px;
+width: 64px;
+background: url("fireball sheet (3).png");
+}
+#sprite-soin {
+z-index: 10;
+position:absolute;
+visibility:hidden;
+top:20%;
+left:50%;
+height: 64px;
+width: 64px;
+background: url("heal.png");
+}
+#sprite-chevalier {
+z-index: 10;
+position:absolute;
+visibility:hidden;
+top:20%;
+left:50%;
+height: 75px;
+width: 63px;
+background: url("asset/chevaliier_attack (2).png");
+}
+#sprite-squel-spell{
+z-index: 10;
+position:absolute;
+visibility:hidden;
+top:20%;
+left:50%;
+height: 72px;
+width: 64px;
+background: url("asset/skelet_spell.png");
+}
+#sprite-archer-attack{
+z-index: 10;
+position:absolute;
+visibility:hidden;
+top:20%;
+left:50%;
+height: 66px;
+width: 64px;
+background: url("asset/archer_attack (2).png");
+}
+#sprite-moine-attack{
+z-index: 10;
+position:absolute;
+visibility:hidden;
+top:20%;
+left:50%;
+height: 72px;
+width: 62px;
+background: url("asset/moine_attack.png");
+}
+#sprite-moine-shield{
+z-index: 10;
+position:absolute;
+visibility:hidden;
+top:100px;
+height: 66px;
+width: 66px;
+background: url("asset/shield-petit.png");
+}
+#sprite-archer-shield{
+z-index: 10;
+position:absolute;
+visibility:hidden;
+top:160px;
+height: 66px;
+width: 66px;
+background: url("asset/shield-petit.png");
+}
+#sprite-guerrier-shield{
+z-index: 10;
+position:absolute;
+visibility:hidden;
+top:220px;
+height: 66px;
+width: 66px;
+background: url("asset/shield-petit.png");
+}
+#sprite-mage-shield{
+z-index: 10;
+position:absolute;
+visibility:hidden;
+top:280px;
+height: 66px;
+width: 66px;
+background: url("asset/shield-petit.png");
+}
 </style>
 </head>
 <body>
-	<img id="hero1cache"
-	src="asset/moine.jpg"
-	 alt="un moine">
+	 <div id="sprite-chevalier">
+	</div>
 <!--On sépare l'écran en 2 partie, une pour l'affichage et une pour les boite de dialogue -->
 <div class="panel_haut">
 	<div class="groupe_ennemi_general"><!--on creeer les premier ennemis qu'on sépare en deux groupe -->
@@ -199,15 +304,35 @@ body{
 		<img id="hero1"
 			src="asset/moine.jpg"
 			 alt="un moine">
+		<div id="sprite-moine-shield">
+			</div>
 		<img id="hero2"
 			src="asset/robin.jpg"
 			 alt="robin des bois">
+		<div id="sprite-archer-shield">
+			</div>
 		<img id="hero3"
 			src="asset/chevalier_cot.jpg"
 			 alt="un chevalier">
+		<div id="sprite-guerrier-shield">
+			</div>
 		<img id="hero4"
 			src="asset/mage_squelette.jpg"
 			 alt="un mage squelette">
+		<div id="sprite-mage-shield">
+			</div>
+		<div id="sprite-container">
+			<div id="sprite-fireball">
+			</div>
+			<div id="sprite-soin">
+			</div>
+			<div id="sprite-squel-spell">
+			</div>
+			<div id="sprite-moine-attack">
+			</div>
+			<div id="sprite-archer-attack">
+			</div>
+		</div>
 	</div>
 </div>
 <div class="panel_bas"><!--panel des différentes fnetre de dialogue  -->
@@ -216,19 +341,11 @@ body{
 	<p id="attaque">attaque</p>
 	<p id="defense">defense</p>
 	<p id="magie">magie</p>
-	<p id="item">item</p>
 	</div>
-	<div class="choix_item"><!--fenetre de choix des actions -->
-		<p>Items:</p>
-		<p id="canonMouton">Canon à Mouton</p>
-		<p id="slime">Slime de Companie</p>
-		<p id="champi">Champignon à fumer</p>
-		</div>
 	<div class="choix_magie"><!--fenetre de choix des actions -->
 		<p>Magie:</p>
-		<p id="boucGlace">Bouclier de glace</p>
-		<p id="eclair">Eclair</p>
-		<p id="khame">Khamehameha</p>
+		<p id="magie1">Soin</p>
+		<p id="magie2">Poing radieux</p>
 		</div>
 	<div class="affichage_perso"><!--fenetre d'affichage des membres du groupe -->
 		<div class="ligne1">
@@ -243,7 +360,7 @@ body{
 			<img id="imgPaul"
 			src="asset/avatar_paul.png">
 				<p id="nomPretre">Paul</p>
-				<p>PV:</p><p id="pvPaul">20</p>
+				<p>PV:</p><p id="pvPaul">10</p>
 				<p>PM:</p><p id="pmPaul">10</p>
 			</div>
 		</div>
@@ -259,7 +376,7 @@ body{
 			<img id="imgJacob"
 			src="asset/avatar_jacob.png">
 				<p id="nomMage">Jacob</p>
-				<p>PV:</p><p id="pvJacob">15</p>
+				<p>PV:</p><p id="pvJacob">10</p>
 				<p>PM:</p><p id="pmJacob">20</p>
 			</div>
 		</div>
