@@ -9,6 +9,8 @@ var dialogueBoite=document.getElementById("dialogue");
 var affichage_en1=document.getElementsByClassName("affichage_ennemis1");
 var affichage_en2=document.getElementsByClassName("affichage_ennemis2");
 var affichage_en3=document.getElementsByClassName("affichage_ennemis3");
+var gagne=document.getElementById("winscreen");
+var perdu=document.getElementById("losescreen");
 
 //recuperation des données de martin
 var moine=document.getElementById("hero1");
@@ -518,16 +520,19 @@ function eliminationEnnemie(){
   audio.play();
   if (mort==3){
     victoire=true;
-    console.log(victoire);
+    gagne.style.display="block";
+    
   }
 }
 
 //fonction de tour qui gere l'ordre de jeu des personnages et des monstres
 tour();
 function tour() {
+  if (j!=-1){
   heroActif.style.visibility="visible";
   spriteActif.style.visibility="hidden";
   stopAnimationJoueur();
+  }
   j=j+1;
   if (j==4-(4-nombreHero)){
     j=-1;
@@ -557,14 +562,12 @@ function TourMonstre(){
   var cibleAl=Math.floor(Math.random() * nombreHero);
   for(let i = 0; i < listEnnemi.length; i++) {
     etatGel=[gel1,gel2,gel3]
-    console.log(etatGel)
     cibleAl=Math.floor(Math.random() * nombreHero);
     if (etatGel[i]==false){
       var cibleJoueur=listJoueur[cibleAl];
       var cibleJoueurPv=listJoueurPv[cibleAl];
       var cibleNomJoueur=listNomJoueur[cibleAl];
       var cibleJoueurDefense=listJoueurDefense[cibleAl];
-      console.log(cibleJoueurDefense);
       setTimeout(() => {
         degatAttq=listEnnemiAttq[i]-cibleJoueurDefense;
         if(degatAttq<0){
@@ -589,7 +592,6 @@ function TourMonstre(){
       }, counttemp);
       counttemp=counttemp+1000;
       setTimeout(() => {
-        console.log(cibleNomJoueur,"test3");
         dialogueBoite.innerHTML=cibleNomJoueur.innerHTML+" a subis "+degatAttq+" dégats.";
         cibleJoueurPv.innerHTML=cibleJoueurPv.innerHTML-degatAttq;
         cibleJoueur.style.visibility="hidden";
@@ -597,8 +599,6 @@ function TourMonstre(){
           cibleJoueur.style.visibility="visible";
           }, 200);
         }, counttemp); 
-        console.log(cibleJoueurPv);
-        console.log(cibleJoueurPv.innerHTML);
         counttemp=counttemp+1000;
         }else{
           dialogueBoite.innerHTML="Squelette"+(i+1)+" est gelé! Il ne peux pas attaquer!";
@@ -614,6 +614,10 @@ function TourMonstre(){
           listJoueurDefense.splice(cibleAl,1);
           spriteSheetAttackJoueur.splice(cibleAl,1);
           dialogueBoite.innerHTML= cibleNomJoueur.innerHTML+" est mort";
+          if (nombreHero==0){
+            defaite=true;
+            perdu.style.display="block";
+          }
         }
       }, counttemp);
     }
@@ -633,10 +637,8 @@ function TourMonstre(){
   stopAnimationShieldGuerrier();
   spriteSheetShieldGuerrier.style.visibility="hidden";
   actionDisponible();
-  if (nombreHero==0){
-    defaite=True;
-  }
   tour();
+  console.log(j);
   }, counttemp);
 }
 

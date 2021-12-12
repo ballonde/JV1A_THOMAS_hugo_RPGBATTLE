@@ -256,9 +256,23 @@ height: 66px;
 width: 66px;
 background: url("asset/shield-petit.png");
 }
+#winscreen{
+	width: 100%;
+	height:100%;
+	z-index: 10;
+	display:none;
+}
+#losescreen{
+	width: 100%;
+	height:100%;
+	z-index: 10;
+	display:none;
+}
 </style>
 </head>
 <body>
+	<img id="winscreen" src="asset/YouWin-27.png">
+	<img id="losescreen" src="asset/GameOver-06.png">
 	 <div id="sprite-chevalier">
 	</div>
 <!--On sépare l'écran en 2 partie, une pour l'affichage et une pour les boite de dialogue -->
@@ -279,19 +293,19 @@ background: url("asset/shield-petit.png");
 		</div>
 	<div class="affichage_ennemis1">
 		<p id="squelette1">squelette1</p>
-		<p>PV:</p><p id="pvSquelette1">30</p>
+		<p>PV:</p><p id="pvSquelette1">50</p>
 		<p>PV:</p><p id="pmSquelette1">30</p>
 	</div>
 
 	<div class="affichage_ennemis2">
 		<p id="squelette2">squelette2</p>
-		<p>PV:</p><p id="pvSquelette2">30</p>
+		<p>PV:</p><p id="pvSquelette2">50</p>
 		<p>PV:</p><p id="pmSquelette2">30</p>
 	</div>
 
 	<div class="affichage_ennemis3">
 		<p id="squelette3">squelette3</p>
-		<p>PV:</p><p id="pvSquelette3">30</p>
+		<p>PV:</p><p id="pvSquelette3">50</p>
 		<p>PV:</p><p id="pmSquelette3">30</p>
 	</div>
 	</div>
@@ -354,14 +368,14 @@ background: url("asset/shield-petit.png");
 			src="asset/avatar_robin.png">
 				<p id="nomMoine">Martin</p>
 				<p>PV:</p><p id="pvMartin">20</p>
-				<p>PM:</p><p id="pmMartin">10</p>
+				<p>PM:</p><p id="pmMartin">15</p>
 			</div>
 			<div class="case">
 			<img id="imgPaul"
 			src="asset/avatar_paul.png">
 				<p id="nomPretre">Paul</p>
-				<p>PV:</p><p id="pvPaul">10</p>
-				<p>PM:</p><p id="pmPaul">10</p>
+				<p>PV:</p><p id="pvPaul">15</p>
+				<p>PM:</p><p id="pmPaul">15</p>
 			</div>
 		</div>
 		<div class="ligne2">
@@ -370,7 +384,7 @@ background: url("asset/shield-petit.png");
 			src="asset/avatar_pierre.png">
 				<p id="nomGuerrier">Pierre</p>
 				<p>PV:</p><p id="pvPierre">30</p>
-				<p>PM:</p><p id="pmPierre">5</p>
+				<p>PM:</p><p id="pmPierre">10</p>
 			</div>
 			<div class="case">
 			<img id="imgJacob"
